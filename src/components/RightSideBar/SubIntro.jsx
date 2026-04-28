@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import ToolTip from '../ToolTip/ToolTip';
 import { AiFillTwitterCircle } from 'react-icons/ai';
 import { BsFacebook } from 'react-icons/bs';
@@ -14,24 +14,27 @@ import { gsap, defaultEase } from '../../utils/gsap';
 const SubIntro = () => {
   const root = useRef(null);
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: defaultEase } });
-      tl.from(root.current, { opacity: 0, y: 30, duration: 0.7 })
-        .from(root.current.querySelector('[data-photo]'), {
-          scale: 0.6,
-          opacity: 0,
-          duration: 0.8,
-          ease: 'back.out(1.7)',
-        }, '-=0.4')
-        .from(root.current.querySelectorAll('[data-stagger]'), {
-          y: 20,
-          opacity: 0,
-          duration: 0.6,
-          stagger: 0.1,
-        }, '-=0.5');
-    }, root);
-    return () => ctx.revert();
+  useEffect(() => {
+    if (!root.current) return;
+    const photo = root.current.querySelector('[data-photo]');
+    const items = root.current.querySelectorAll('[data-stagger]');
+
+    const tl = gsap.timeline({ defaults: { ease: defaultEase } });
+    if (photo) {
+      tl.fromTo(photo,
+        { scale: 0.6, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.7, ease: 'back.out(1.7)', clearProps: 'all' }
+      );
+    }
+    if (items && items.length) {
+      tl.fromTo(items,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, stagger: 0.08, clearProps: 'all' },
+        '-=0.4'
+      );
+    }
+
+    return () => tl.kill();
   }, []);
 
   return (

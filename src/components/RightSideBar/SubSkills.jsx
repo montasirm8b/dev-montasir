@@ -1,22 +1,21 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import ProjectListSm from './ProjectListSm';
 import { gsap, defaultEase } from '../../utils/gsap';
 
 const SubSkills = () => {
   const root = useRef(null);
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: defaultEase } });
-      tl.from(root.current, { opacity: 0, x: 30, duration: 0.6 })
-        .from(root.current.querySelectorAll('[data-sub-item]'), {
-          y: 20,
-          opacity: 0,
-          duration: 0.5,
-          stagger: 0.12,
-        }, '-=0.3');
-    }, root);
-    return () => ctx.revert();
+  useEffect(() => {
+    if (!root.current) return;
+    const items = root.current.querySelectorAll('[data-sub-item]');
+    if (!items || !items.length) return;
+
+    const tween = gsap.fromTo(items,
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: defaultEase, clearProps: 'all' }
+    );
+
+    return () => tween.kill();
   }, []);
 
   return (

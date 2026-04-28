@@ -1,31 +1,45 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import ToolTip from '../ToolTip/ToolTip'
 import SkillCard from './SkillCard';
 import { themeMode } from '../../utils/enums';
-import { gsap, SCROLLER, defaultEase } from '../../utils/gsap';
+import { gsap, getScroller, defaultEase } from '../../utils/gsap';
 
 const Skills = () => {
   const root = useRef(null);
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      const cards = root.current.querySelectorAll('[data-skill-card]');
-      gsap.from(cards, {
-        y: 40,
-        opacity: 0,
-        scale: 0.9,
+  useEffect(() => {
+    if (!root.current) return;
+    const scroller = getScroller();
+    const cards = root.current.querySelectorAll('[data-skill-card]');
+    if (!cards || !cards.length) return;
+
+    const triggerCfg = scroller
+      ? {
+          scroller,
+          trigger: root.current,
+          start: 'top 90%',
+          toggleActions: 'play none none none',
+        }
+      : undefined;
+
+    const tween = gsap.fromTo(cards,
+      { y: 30, opacity: 0, scale: 0.9 },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
         duration: 0.6,
         stagger: 0.06,
         ease: defaultEase,
-        scrollTrigger: {
-          scroller: SCROLLER,
-          trigger: root.current,
-          start: 'top 85%',
-          toggleActions: 'play none none reverse',
-        },
-      });
-    }, root);
-    return () => ctx.revert();
+        clearProps: 'all',
+        ...(triggerCfg ? { scrollTrigger: triggerCfg } : {}),
+      }
+    );
+
+    return () => {
+      if (tween.scrollTrigger) tween.scrollTrigger.kill();
+      tween.kill();
+    };
   }, []);
 
   return (

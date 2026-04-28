@@ -1,29 +1,43 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import ProjectListLg from './ProjectListLg';
 import Projects_data from './../../assets/data/projects.data';
-import { gsap, SCROLLER, defaultEase } from '../../utils/gsap';
+import { gsap, getScroller, defaultEase } from '../../utils/gsap';
 
 const Projects = () => {
   const root = useRef(null);
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      const cards = root.current.querySelectorAll('[data-project-card]');
-      gsap.from(cards, {
-        y: 80,
-        opacity: 0,
-        duration: 0.9,
-        stagger: 0.12,
-        ease: defaultEase,
-        scrollTrigger: {
-          scroller: SCROLLER,
+  useEffect(() => {
+    if (!root.current) return;
+    const scroller = getScroller();
+    const cards = root.current.querySelectorAll('[data-project-card]');
+    if (!cards || !cards.length) return;
+
+    const triggerCfg = scroller
+      ? {
+          scroller,
           trigger: root.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
-        },
-      });
-    }, root);
-    return () => ctx.revert();
+          start: 'top 90%',
+          toggleActions: 'play none none none',
+        }
+      : undefined;
+
+    const tween = gsap.fromTo(cards,
+      { y: 60, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: defaultEase,
+        clearProps: 'all',
+        ...(triggerCfg ? { scrollTrigger: triggerCfg } : {}),
+      }
+    );
+
+    return () => {
+      if (tween.scrollTrigger) tween.scrollTrigger.kill();
+      tween.kill();
+    };
   }, []);
 
   return (
