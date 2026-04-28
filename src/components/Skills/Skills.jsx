@@ -1,11 +1,35 @@
-import React from 'react'
+import React, { useLayoutEffect, useRef } from 'react';
 import ToolTip from '../ToolTip/ToolTip'
 import SkillCard from './SkillCard';
 import { themeMode } from '../../utils/enums';
+import { gsap, SCROLLER, defaultEase } from '../../utils/gsap';
 
 const Skills = () => {
+  const root = useRef(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const cards = root.current.querySelectorAll('[data-skill-card]');
+      gsap.from(cards, {
+        y: 40,
+        opacity: 0,
+        scale: 0.9,
+        duration: 0.6,
+        stagger: 0.06,
+        ease: defaultEase,
+        scrollTrigger: {
+          scroller: SCROLLER,
+          trigger: root.current,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+    }, root);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className='pb-14 lg:pl-4 lg:pt-4 lg:pb-4 lg:pr-0 mx-2'>
+    <div ref={root} className='pb-14 lg:pl-4 lg:pt-4 lg:pb-4 lg:pr-0 mx-2'>
     <div className='lg:hidden flex justify-center items-center bg-blue-500 bg-opacity-30 backdrop-blur-lg p-2 text-slate-100 text-xl font-semibold mb-6 rounded-md sticky top-0 z-20 mt-2 shadow-md'>My Skills are</div>
     <div className='bg-blue-500 bg-opacity-20 py-2 pb-4 lg:p-4 rounded-xl shadow-xl backdrop-blur-lg lg:min-h-full mx-1'>
       <div className='w-full flex justify-center items-center'>
@@ -15,32 +39,40 @@ const Skills = () => {
             <h1 className='text-white text-lg font-Nunito-regular mb-2'>Web Programming / Frameworks</h1>
           <div className='flex justify-center items-center flex-wrap gap-2 lg:gap-6'>
             <ToolTip title="Next JS">
-              <SkillCard 
-                imgSrc="https://seeklogo.com/images/N/next-js-logo-8FCFF51DD2-seeklogo.com.png"
-                altText="nextjs"  
-              />
+              <div data-skill-card>
+                <SkillCard
+                  imgSrc="https://seeklogo.com/images/N/next-js-logo-8FCFF51DD2-seeklogo.com.png"
+                  altText="nextjs"
+                />
+              </div>
             </ToolTip>
             <ToolTip title="React JS">
-              <SkillCard 
-                  imgSrc="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png"
-                  altText="reactjs"
-                  vairant={themeMode.DARK}
-                />
+              <div data-skill-card>
+                <SkillCard
+                    imgSrc="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png"
+                    altText="reactjs"
+                    vairant={themeMode.DARK}
+                  />
+              </div>
             </ToolTip>
-            
+
             <ToolTip title="Javascript">
-              <SkillCard 
-                imgSrc='https://www.seekpng.com/png/full/80-803385_open-javascript-logo-png-white.png'
-                altText='javascript'
-                bgColor='bg-yellow-400'
-              />
+              <div data-skill-card>
+                <SkillCard
+                  imgSrc='https://www.seekpng.com/png/full/80-803385_open-javascript-logo-png-white.png'
+                  altText='javascript'
+                  bgColor='bg-yellow-400'
+                />
+              </div>
             </ToolTip>
-            
+
             <ToolTip title="Typescript">
-              <SkillCard 
-                imgSrc="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_typescript_icon_130108.png"
-                altText="typescript"
-              />
+              <div data-skill-card>
+                <SkillCard
+                  imgSrc="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_typescript_icon_130108.png"
+                  altText="typescript"
+                />
+              </div>
             </ToolTip>
 
           </div>
@@ -48,22 +80,28 @@ const Skills = () => {
           <h1 className='text-white text-lg font-Nunito-regular mt-6 mb-2'>UI / UX design</h1>
           <div className='flex justify-center items-center flex-wrap gap-2 lg:gap-6'>
             <ToolTip title="Tailwindcss">
-              <SkillCard 
-                imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/900px-Tailwind_CSS_Logo.svg.png"
-                altText="tailwindcss"
-              />
+              <div data-skill-card>
+                <SkillCard
+                  imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/900px-Tailwind_CSS_Logo.svg.png"
+                  altText="tailwindcss"
+                />
+              </div>
             </ToolTip>
             <ToolTip title="Bootstrap">
-              <SkillCard 
-                imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/768px-Bootstrap_logo.svg.png"
-                altText="bootstrap"
-              />
+              <div data-skill-card>
+                <SkillCard
+                  imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/768px-Bootstrap_logo.svg.png"
+                  altText="bootstrap"
+                />
+              </div>
             </ToolTip>
             <ToolTip title="MaterialUI">
-              <SkillCard 
-                imgSrc="https://seeklogo.com/images/M/material-ui-logo-5BDCB9BA8F-seeklogo.com.png"
-                altText="materialui"
-              />
+              <div data-skill-card>
+                <SkillCard
+                  imgSrc="https://seeklogo.com/images/M/material-ui-logo-5BDCB9BA8F-seeklogo.com.png"
+                  altText="materialui"
+                />
+              </div>
             </ToolTip>
           </div>
 
@@ -71,28 +109,36 @@ const Skills = () => {
 
           <div className='flex justify-center items-center flex-wrap gap-2 lg:gap-6'>
             <ToolTip title="Firebase">
-              <SkillCard 
-                imgSrc="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-firebase-icon.png"
-                altText="firebase"
-              />
+              <div data-skill-card>
+                <SkillCard
+                  imgSrc="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-firebase-icon.png"
+                  altText="firebase"
+                />
+              </div>
             </ToolTip>
             <ToolTip title="Sanity.io">
-              <SkillCard 
-                imgSrc="https://avatars.githubusercontent.com/u/17177659?s=200&v=4"
-                altText="sanity"
-              />
+              <div data-skill-card>
+                <SkillCard
+                  imgSrc="https://avatars.githubusercontent.com/u/17177659?s=200&v=4"
+                  altText="sanity"
+                />
+              </div>
             </ToolTip>
             <ToolTip title="GraphQL">
-              <SkillCard 
-                imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/GraphQL_Logo.svg/768px-GraphQL_Logo.svg.png?20161105194737"
-                altText="graphql"
-              />
+              <div data-skill-card>
+                <SkillCard
+                  imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/GraphQL_Logo.svg/768px-GraphQL_Logo.svg.png?20161105194737"
+                  altText="graphql"
+                />
+              </div>
             </ToolTip>
             <ToolTip title="Socket.io">
-              <SkillCard 
-                imgSrc="https://cdn.freebiesupply.com/logos/large/2x/socket-io-logo-png-transparent.png"
-                altText="socket.io"
-              />
+              <div data-skill-card>
+                <SkillCard
+                  imgSrc="https://cdn.freebiesupply.com/logos/large/2x/socket-io-logo-png-transparent.png"
+                  altText="socket.io"
+                />
+              </div>
             </ToolTip>
           </div>
         </div>

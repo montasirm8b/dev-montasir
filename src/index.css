@@ -78,10 +78,28 @@ code {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   height: 100vh;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 .scroll-Section {
   scroll-snap-align: start;
+  will-change: transform, opacity;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.gsap-fade-init {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .px2500 {

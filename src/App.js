@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Intro from "./components/Intro/Intro";
 import LeftSideBar from "./components/LeftSideBar/LeftSideBar";
 import RightSideBar from "./components/RightSideBar/RightSideBar";
@@ -17,6 +17,7 @@ import mobilelogo from "./assets/images/mlogo.png";
 import Quote from "./components/Intro/Quote";
 import { HiExternalLink } from "react-icons/hi";
 import { BarLoader } from "react-spinners";
+import { ScrollTrigger } from "./utils/gsap";
 
 const App = () => {
   const [isAppLoading, setIsAppLoading] = useState(true);
@@ -61,6 +62,18 @@ const App = () => {
     // eslint-disable-next-line
   }, []);
 
+  useLayoutEffect(() => {
+    const refresh = () => ScrollTrigger.refresh();
+    const t1 = setTimeout(refresh, 200);
+    const t2 = setTimeout(refresh, 1200);
+    window.addEventListener("resize", refresh);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      window.removeEventListener("resize", refresh);
+    };
+  }, []);
+
   const handleScroll = () => {
     dispatch(
       setScrollPosition({
@@ -79,6 +92,7 @@ const App = () => {
         dispatch(setInsideViewPort(item.toString()));
       }
     }
+    ScrollTrigger.update();
   };
 
   const handleTransitionEnd = () => {

@@ -1,9 +1,7 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 import SubIntro from './SubIntro';
 import SubSkills from './SubSkills';
-import SubProjects from './SubProjects';
 
 
 const RightSideBar = () => {
