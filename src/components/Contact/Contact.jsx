@@ -2,12 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import { HiOutlineMail, HiOutlineLocationMarker } from 'react-icons/hi';
 import { BsGithub, BsLinkedin, BsFacebook } from 'react-icons/bs';
 import { AiFillTwitterCircle } from 'react-icons/ai';
-import { FiCopy, FiCheck, FiSend } from 'react-icons/fi';
+import { FiCopy, FiCheck, FiSend, FiLoader, FiAlertCircle } from 'react-icons/fi';
 import { gsap, getScroller, defaultEase } from '../../utils/gsap';
 import Links from '../../assets/data/links.data';
 
 const EMAIL = 'mmcse19@gmail.com';
 const LOCATION = 'Rajshahi, Bangladesh';
+const WEB3FORMS_KEY = process.env.REACT_APP_WEB3FORMS_KEY;
 
 const socials = [
   { Icon: BsGithub, href: Links.github, label: 'GitHub' },
@@ -20,7 +21,8 @@ const Contact = () => {
   const root = useRef(null);
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [copied, setCopied] = useState(false);
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState('idle'); // 'idle' | 'sending' | 'sent' | 'error'
+  const [errorMsg, setErrorMsg] = useState('');
 
   useEffect(() => {
     if (!root.current) return;
@@ -92,16 +94,47 @@ const Contact = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) return;
-    const subject = encodeURIComponent(form.subject || `Hello from ${form.name}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
-    );
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
-    setSent(true);
-    setTimeout(() => setSent(false), 2500);
+    if (!WEB3FORMS_KEY) {
+      setStatus('error');
+      setErrorMsg('Form is not configured. Please email me directly.');
+      return;
+    }
+
+    setStatus('sending');
+    setErrorMsg('');
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          name: form.name,
+          email: form.email,
+          subject: form.subject || `Portfolio contact from ${form.name}`,
+          message: form.message,
+          from_name: 'Portfolio Contact Form',
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus('sent');
+        setForm({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setStatus('idle'), 3000);
+      } else {
+        setStatus('error');
+        setErrorMsg(data.message || 'Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      setStatus('error');
+      setErrorMsg('Network error. Please try again.');
+    }
   };
 
   return (
@@ -224,15 +257,24 @@ const Contact = () => {
                 />
               </div>
               <div data-contact-item className="flex items-center justify-between gap-3 mt-1">
-                <span className="text-xs text-slate-400 font-Nunito-light">
-                  Opens your default mail app.
+                <span className={`text-xs font-Nunito-light ${status === 'error' ? 'text-rose-400' : 'text-slate-400'}`}>
+                  {status === 'error' && (
+                    <span className="inline-flex items-center gap-1">
+                      <FiAlertCircle size={12} /> {errorMsg}
+                    </span>
+                  )}
+                  {status === 'sent' && 'Thanks! I\'ll get back to you soon.'}
+                  {(status === 'idle' || status === 'sending') && 'Sent securely via Web3Forms.'}
                 </span>
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2 bg-sky-500 hover:bg-sky-400 active:scale-[0.98] text-white font-Nunito-regular px-4 lg:px-5 py-2 rounded-lg shadow-lg shadow-sky-500/20 transition-all duration-200"
+                  disabled={status === 'sending'}
+                  className="inline-flex items-center gap-2 bg-sky-500 hover:bg-sky-400 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed text-white font-Nunito-regular px-4 lg:px-5 py-2 rounded-lg shadow-lg shadow-sky-500/20 transition-all duration-200"
                 >
-                  {sent ? <FiCheck size={16} /> : <FiSend size={16} />}
-                  {sent ? 'Sent' : 'Send Message'}
+                  {status === 'sending' && <FiLoader size={16} className="animate-spin" />}
+                  {status === 'sent' && <FiCheck size={16} />}
+                  {(status === 'idle' || status === 'error') && <FiSend size={16} />}
+                  {status === 'sending' ? 'Sending…' : status === 'sent' ? 'Sent' : 'Send Message'}
                 </button>
               </div>
             </form>
