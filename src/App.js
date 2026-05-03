@@ -113,8 +113,18 @@ const App = () => {
 
       <div className="w-screen grid grid-cols-12 min-h-screen">
         <div className="relative col-span-2">
-          <div className="fixed z-20 flex flex-col items-center lg:p-4 top-0 left-0 h-full  lg:bg-blue-500 lg:bg-opacity-25 lg:w-1/6">
-            <LeftSideBar refData={scrollRef} />
+          <div className="fixed z-20 top-0 left-0 h-full lg:w-1/6">
+            <div className="relative h-full w-full lg:p-3">
+              <div className="relative h-full w-full lg:bg-gradient-to-br lg:from-white/10 lg:via-blue-500/15 lg:to-blue-900/30 lg:backdrop-blur-xl lg:rounded-2xl lg:ring-1 lg:ring-white/10 lg:shadow-2xl lg:shadow-blue-900/40 overflow-hidden flex flex-col items-stretch p-3 lg:p-4">
+                <div className="pointer-events-none absolute inset-0 hidden lg:block">
+                  <div className="absolute -top-24 -left-16 h-56 w-56 rounded-full bg-sky-400/15 blur-3xl"></div>
+                  <div className="absolute -bottom-24 -right-16 h-56 w-56 rounded-full bg-indigo-500/15 blur-3xl"></div>
+                </div>
+                <div className="relative z-10 h-full">
+                  <LeftSideBar refData={scrollRef} />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
