@@ -56,7 +56,7 @@ const MobileIntro = () => {
           ${isOpen ? '-z-10' : 'z-10'}
         `}
       >
-        <img src={'https://raw.githubusercontent.com/techbeeyt/data/main/montasir.jpg'} alt="Montasir" />
+        <img src={'https://raw.githubusercontent.com/montasirm8b/data/main/montasir.jpg'} alt="Montasir" />
       </div>
     </div>
   )

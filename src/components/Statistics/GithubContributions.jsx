@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { BsGithub } from 'react-icons/bs';
 import { gsap, getScroller } from '../../utils/gsap';
 
-const GH_USER = 'techbeeyt';
+const GH_USER = 'montasirm8b';
 
 const stats = [
   { label: 'Years Coding', value: 5, suffix: '+' },

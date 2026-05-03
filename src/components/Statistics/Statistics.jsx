@@ -40,13 +40,15 @@ const Statistics = () => {
 
   return (
     <div ref={root} className="pt-4 pr-0 pb-3 pl-2 lg:pl-4 h-full">
-      <div className="bg-blue-500 bg-opacity-20 backdrop-blur-md h-[89vh] lg:h-full w-[78.5vw] lg:w-auto rounded-md flex flex-col justify-start items-start p-4 lg:p-8 overflow-hidden">
-        <div data-stats-heading className="flex gap-2 w-full justify-start items-center mb-4 shrink-0">
+      <div className="relative bg-gradient-to-br from-white/10 via-blue-500/15 to-blue-900/25 backdrop-blur-xl h-[89vh] lg:h-full w-[78.5vw] lg:w-auto rounded-2xl flex flex-col justify-start items-start p-4 lg:p-8 ring-1 ring-white/10 shadow-2xl shadow-blue-900/40 overflow-hidden">
+        <div className='pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-sky-400/20 blur-3xl'></div>
+        <div className='pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-indigo-500/20 blur-3xl'></div>
+        <div data-stats-heading className="relative z-10 flex gap-3 w-full justify-start items-center mb-4 shrink-0">
           <span className="font-DynaPuff-bold text-xl md:text-2xl text-slate-100">My Stats</span>
-          <div className="h-2px w-1/2 bg-sky-600 rounded-lg"></div>
+          <div className="h-px flex-1 bg-gradient-to-r from-sky-400/60 via-blue-500/40 to-transparent rounded-lg"></div>
         </div>
 
-        <div className="flex-1 min-h-0 w-full">
+        <div className="relative z-10 flex-1 min-h-0 w-full">
           <GithubContributions />
         </div>
       </div>

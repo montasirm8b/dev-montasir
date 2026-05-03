@@ -93,7 +93,7 @@ const ProjectListLg = ({ project }) => {
   return (
     <div
       ref={containerRef}
-      className="rounded-lg lg:rounded-2xl overflow-hidden backdrop-blur-lg bg-blue-500 bg-opacity-20 perspective-1000 will-change-transform"
+      className="rounded-lg lg:rounded-2xl overflow-hidden backdrop-blur-xl bg-gradient-to-br from-white/10 via-blue-500/15 to-blue-900/25 ring-1 ring-white/10 hover:ring-sky-400/40 shadow-xl shadow-blue-900/30 hover:shadow-2xl hover:shadow-sky-500/20 transition-all duration-300 perspective-1000 will-change-transform"
       onMouseEnter={startScroll}
       onMouseLeave={() => {
         stopScroll();
