@@ -1,53 +1,32 @@
 import cLogo from '../../../assets/icons/logo-cprog.png';
 import cppLogo from '../../../assets/icons/logo-cpp.png';
 import pythonLogo from '../../../assets/icons/logo-python.png';
-import jsLogo from '../../../assets/icons/logo-js.png'
-import nodejsLogo from '../../../assets/icons/logo-nodejs.png'
+import jsLogo from '../../../assets/icons/logo-js.png';
+import nodejsLogo from '../../../assets/icons/logo-nodejs.png';
 import tsLogo from '../../../assets/icons/logo-ts.png';
 import { motion } from 'framer-motion';
+import SkillItem from '../SkillItem';
+
+const items = [
+  { logo: cLogo, name: 'C' },
+  { logo: cppLogo, name: 'C++' },
+  { logo: jsLogo, name: 'Javascript (ES6)', iconBg: 'bg-yellow-500' },
+  { logo: nodejsLogo, name: 'Node js' },
+  { logo: tsLogo, name: 'Typescript' },
+  { logo: pythonLogo, name: 'Python' },
+];
+
 const ProgrammingLanguages = () => {
   return (
-    <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration:0.5}} >
-      <div className="text-lg lg:text-xl text-slate-200 font-semibold mb-2 lg:mb-5">@Programming Languages</div>
-        <div className="flex justify-start items-center py-2 gap-2">
-          <div className="w-6 h-6 flex justify-center items-center rounded-full">
-            <img src={cLogo} alt="" />
-          </div>
-          <span className="text-slate-200 font-Nunito-light">C</span>
-        </div>
-        <div className="flex justify-start items-center py-2 gap-2">
-          <div className="w-6 h-6 flex justify-center items-center rounded-full">
-            <img src={cppLogo} alt="" />
-          </div>
-          <span className="text-slate-200 font-Nunito-light">C++ </span>
-        </div>
-        <div className="flex justify-start items-center py-2 gap-2">
-          <div className="bg-yellow-500 w-6 h-6 p-1 flex justify-center items-center rounded-full">
-            <img src={jsLogo} alt="" />
-          </div>
-          <span className="text-slate-200 font-Nunito-light">Javascript (ES6) </span>
-        </div>
-          
-        <div className="flex justify-start items-center py-2 gap-2">
-          <div className="bg-transparent w-6 h-6 flex justify-center items-center rounded-full">
-            <img src={nodejsLogo} alt="" />
-          </div>
-          <span className="text-slate-200 font-Nunito-light">Node js</span>
-        </div>
-        <div className="flex justify-start items-center py-2 gap-2">
-          <div className="w-6 h-6 flex justify-center items-center rounded-full overflow-hidden">
-            <img src={tsLogo} alt="" />
-          </div>
-          <span className="text-slate-200 font-Nunito-light">Typescript</span>
-        </div>
-        <div className="flex justify-start items-center py-2 gap-2">
-          <div className="bg-transparent w-6 h-6 flex justify-center items-center rounded-full">
-            <img src={pythonLogo} alt="" />
-          </div>
-          <span className="text-slate-200 font-Nunito-light">Python</span>
-        </div>
+    <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+      <div className="text-base lg:text-lg text-sky-300 font-DynaPuff-bold mb-3 lg:mb-4">Programming Languages</div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2 lg:gap-3">
+        {items.map((item) => (
+          <SkillItem key={item.name} {...item} />
+        ))}
+      </div>
     </motion.div>
-  )
-}
+  );
+};
 
-export default ProgrammingLanguages
+export default ProgrammingLanguages;

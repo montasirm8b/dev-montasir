@@ -38,15 +38,23 @@ const SubIntro = () => {
   }, []);
 
   return (
-    <div ref={root} className='relative flex flex-col justify-start items-center bg-gradient-to-br from-white/10 via-blue-500/15 to-blue-900/25 backdrop-blur-xl rounded-2xl h-full pt-10 ring-1 ring-white/10 shadow-2xl shadow-blue-900/40 overflow-hidden'>
-      <div className='pointer-events-none absolute -top-24 -right-16 h-56 w-56 rounded-full bg-sky-400/20 blur-3xl'></div>
-      <div className='pointer-events-none absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-indigo-500/20 blur-3xl'></div>
-      <div className='absolute w-full'>
+    <div ref={root} className='relative flex flex-col justify-start items-center bg-gradient-to-br from-white/10 via-blue-500/15 to-blue-900/25 backdrop-blur-xl rounded-2xl h-full pt-10 ring-1 ring-white/10 shadow-2xl shadow-blue-900/40'>
+      <div className='pointer-events-none absolute inset-0 rounded-2xl overflow-hidden'>
+        <div className='absolute -top-24 -right-16 h-56 w-56 rounded-full bg-sky-400/20 blur-3xl'></div>
+        <div className='absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-indigo-500/20 blur-3xl'></div>
+      </div>
+      <div className='absolute w-full z-20'>
         <Quote />
       </div>
-      <div data-photo className='relative w-32 h-32 bg-blue-700 rounded-full overflow-y-hidden group ring-4 ring-sky-400/40 hover:ring-sky-300/60 shadow-xl shadow-sky-500/30 transition-all duration-300 will-change-transform'>
-        <img src={ProfilePhoto} alt="Montasir" />
-        <div className='top-0 absolute z-30 bg-gradient-to-tr from-stone-800 to-blue-700 opacity-25 group-hover:opacity-0 transition-all duration-300 w-32 h-32'></div>
+      <div data-photo className='relative group will-change-transform'>
+        <div className='absolute -inset-2 rounded-full bg-gradient-to-br from-sky-400/40 via-blue-500/30 to-indigo-500/40 blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500'></div>
+        <div className='relative w-36 h-36 rounded-full overflow-hidden ring-2 ring-white/30 group-hover:ring-sky-300/60 shadow-2xl shadow-blue-900/50 transition-all duration-300'>
+          <img src={ProfilePhoto} alt="Montasir Mahmud" className='w-full h-full object-cover' />
+        </div>
+      </div>
+      <div data-stagger className='mt-4 flex flex-col items-center gap-0.5'>
+        <span className='font-Josefin-Slab-600 text-xl text-white tracking-wide'>Montasir Mahmud</span>
+        <span className='text-xs uppercase tracking-[0.2em] text-sky-300/90 font-Nunito-regular'>Full Stack Developer</span>
       </div>
       <h1 data-stagger className='mt-5 px-4 text-white font-Nunito-regular tracking-wide'>About Me</h1>
       <div data-stagger className='mx-auto mt-1 mb-2 h-px w-12 bg-gradient-to-r from-transparent via-sky-300/60 to-transparent'></div>
