@@ -78,7 +78,7 @@ const GithubContributions = () => {
           <div
             key={s.label}
             data-stat-card
-            className='bg-white/5 hover:bg-white/10 transition-colors duration-300 backdrop-blur-md rounded-xl p-4 lg:p-5 border border-white/10 shadow-lg'
+            className='bg-white/5 hover:bg-white/10 transition-colors duration-300 rounded-xl p-4 lg:p-5 border border-white/10 shadow-lg'
           >
             <div className='flex items-baseline gap-1'>
               <span
@@ -98,7 +98,7 @@ const GithubContributions = () => {
         ))}
       </div>
 
-      <div className='bg-white/5 backdrop-blur-md rounded-xl p-4 lg:p-5 border border-white/10 shadow-lg'>
+      <div className='bg-white/5 rounded-xl p-4 lg:p-5 border border-white/10 shadow-lg'>
         <div className='flex items-center justify-between mb-3'>
           <div className='flex items-center gap-2 text-slate-100'>
             <BsGithub size={20} />

@@ -18,6 +18,7 @@ import Quote from "./components/Intro/Quote";
 import { HiExternalLink } from "react-icons/hi";
 import { BarLoader } from "react-spinners";
 import { ScrollTrigger } from "./utils/gsap";
+import CustomCursor from "./components/CustomCursor/CustomCursor";
 
 const App = () => {
   const [isAppLoading, setIsAppLoading] = useState(true);
@@ -103,8 +104,15 @@ const App = () => {
     } else setShowMobileIntro(false);
   };
 
+  const bgBlurActive = insideViewport && insideViewport !== "intro";
+
   return (
     <>
+      <div
+        className={`bg-blur-overlay ${bgBlurActive ? "is-active" : ""}`}
+        aria-hidden="true"
+      />
+      <CustomCursor />
       {isAppLoading ? (
         <div className="fixed z-[999999] w-screen h-screen backdrop-blur-xl backdrop-brightness-50 flex justify-center items-center">
           <BarLoader color={"#ffffff"} />

@@ -85,7 +85,7 @@ const SkillsSection = () => {
 
   return (
     <div ref={root} className="pt-4 pr-0 pb-3 pl-2 lg:pl-4 h-full">
-      <div className="relative bg-gradient-to-br from-white/10 via-blue-500/15 to-blue-900/25 backdrop-blur-xl h-[89vh] lg:h-full w-[78.5vw] lg:w-auto rounded-2xl flex flex-col justify-start items-start p-4 lg:p-8 ring-1 ring-white/10 shadow-2xl shadow-blue-900/40 overflow-hidden">
+      <div className="relative bg-gradient-to-br from-white/10 via-blue-500/15 to-blue-900/25 h-[89vh] lg:h-full w-[78.5vw] lg:w-auto rounded-2xl flex flex-col justify-start items-start p-4 lg:p-8 ring-1 ring-white/10 shadow-2xl shadow-blue-900/40 overflow-hidden">
         <div className='pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-sky-400/20 blur-3xl'></div>
         <div className='pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-indigo-500/20 blur-3xl'></div>
 

@@ -91,7 +91,7 @@ const ProjectListLg = ({ project }) => {
   return (
     <div
       ref={containerRef}
-      className="group relative rounded-2xl overflow-hidden backdrop-blur-2xl backdrop-saturate-150 bg-gradient-to-br from-white/5 via-blue-500/10 to-blue-900/15 ring-1 ring-white/10 hover:ring-sky-400/40 shadow-xl shadow-blue-900/30 hover:shadow-2xl hover:shadow-sky-500/20 transition-all duration-300 perspective-1000 will-change-transform flex flex-col"
+      className="group relative rounded-2xl overflow-hidden bg-gradient-to-br from-white/10 via-blue-500/15 to-blue-900/25 ring-1 ring-white/10 hover:ring-sky-400/40 shadow-xl shadow-blue-900/30 hover:shadow-2xl hover:shadow-sky-500/20 transition-all duration-300 perspective-1000 will-change-transform flex flex-col"
       onMouseEnter={startScroll}
       onMouseLeave={() => {
         stopScroll();

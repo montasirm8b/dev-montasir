@@ -139,7 +139,7 @@ const Contact = () => {
 
   return (
     <div ref={root} className="pt-4 pr-0 pb-3 pl-2 lg:pl-4 h-full">
-      <div className="relative bg-gradient-to-br from-white/10 via-blue-500/15 to-blue-900/25 backdrop-blur-xl h-[89vh] lg:h-full w-[78.5vw] lg:w-auto rounded-2xl flex flex-col justify-start items-start p-4 lg:p-8 ring-1 ring-white/10 shadow-2xl shadow-blue-900/40 overflow-hidden">
+      <div className="relative bg-gradient-to-br from-white/10 via-blue-500/15 to-blue-900/25 h-[89vh] lg:h-full w-[78.5vw] lg:w-auto rounded-2xl flex flex-col justify-start items-start p-4 lg:p-8 ring-1 ring-white/10 shadow-2xl shadow-blue-900/40 overflow-hidden">
         <div className='pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-sky-400/20 blur-3xl'></div>
         <div className='pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-indigo-500/20 blur-3xl'></div>
         <div
@@ -153,7 +153,7 @@ const Contact = () => {
         <div className="relative z-10 flex-1 min-h-0 w-full mt-4 lg:mt-6 overflow-y-auto scrollbar-rounded pr-1">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-6">
             <div className="lg:col-span-2 flex flex-col gap-4">
-              <div data-contact-item className="bg-white/5 backdrop-blur-md rounded-xl p-4 lg:p-5 border border-white/10">
+              <div data-contact-item className="bg-white/5 rounded-xl p-4 lg:p-5 border border-white/10">
                 <h3 className="font-Merriweather-bold text-lg text-slate-100">Let's build something</h3>
                 <p className="text-slate-300 font-Nunito-light text-sm mt-1 leading-relaxed">
                   Open to freelance, full-time roles, and interesting collaborations. I usually reply within 24 hours.
@@ -163,7 +163,7 @@ const Contact = () => {
               <button
                 data-contact-item
                 onClick={copyEmail}
-                className="group bg-white/5 hover:bg-white/10 transition-colors duration-300 backdrop-blur-md rounded-xl p-4 border border-white/10 flex items-center justify-between text-left"
+                className="group bg-white/5 hover:bg-white/10 transition-colors duration-300 rounded-xl p-4 border border-white/10 flex items-center justify-between text-left"
               >
                 <div className="flex items-center gap-3 min-w-0">
                   <div className="shrink-0 w-9 h-9 rounded-lg bg-sky-500/20 text-sky-300 flex items-center justify-center">
@@ -179,7 +179,7 @@ const Contact = () => {
                 </span>
               </button>
 
-              <div data-contact-item className="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 flex items-center gap-3">
+              <div data-contact-item className="bg-white/5 rounded-xl p-4 border border-white/10 flex items-center gap-3">
                 <div className="shrink-0 w-9 h-9 rounded-lg bg-sky-500/20 text-sky-300 flex items-center justify-center">
                   <HiOutlineLocationMarker size={20} />
                 </div>
@@ -189,7 +189,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div data-contact-item className="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10">
+              <div data-contact-item className="bg-white/5 rounded-xl p-4 border border-white/10">
                 <div className="text-xs uppercase tracking-wide text-slate-400 font-Nunito-light mb-3">Find me on</div>
                 <div className="flex gap-3">
                   {socials.map(({ Icon, href, label }) => (
@@ -212,7 +212,7 @@ const Contact = () => {
 
             <form
               onSubmit={handleSubmit}
-              className="lg:col-span-3 bg-white/5 backdrop-blur-md rounded-xl p-4 lg:p-6 border border-white/10 flex flex-col gap-3 lg:gap-4"
+              className="lg:col-span-3 bg-white/5 rounded-xl p-4 lg:p-6 border border-white/10 flex flex-col gap-3 lg:gap-4"
             >
               <div data-contact-item className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4">
                 <Field
