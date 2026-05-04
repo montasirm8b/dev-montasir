@@ -156,11 +156,16 @@ code {
   mask-repeat: no-repeat;
   mask-position: 50% 50%;
   mask-size: 0% 0%;
-  transition: mask-size 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0;
+  transition: opacity 650ms ease,
+              mask-size 0ms linear 650ms;
 }
 
 .bg-blur-overlay.is-active {
   mask-size: 260% 260%;
+  opacity: 1;
+  transition: opacity 0ms linear 0ms,
+              mask-size 1100ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .cursor-custom,
