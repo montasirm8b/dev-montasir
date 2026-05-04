@@ -121,14 +121,19 @@ code {
   background-color: transparent;
 }
 
+.scrollbar-rounded {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+
 .scrollbar-rounded::-webkit-scrollbar-thumb {
-  background-color: #1367dc8b;
+  background-color: rgba(255, 255, 255, 0.18);
   border-radius: 20px;
   transition: all 200ms ease;
 }
 
 .scrollbar-rounded::-webkit-scrollbar-thumb:hover {
-  background-color: #2377ed;
+  background-color: rgba(255, 255, 255, 0.32);
   border-radius: 20px;
 }
 

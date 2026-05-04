@@ -95,8 +95,8 @@ const SkillsSection = () => {
           <span className="hidden md:inline text-xs uppercase tracking-widest text-slate-400 font-Nunito-light">{categories.length} categories</span>
         </div>
 
-        <div className="relative z-10 w-full mt-5 lg:mt-7 overflow-x-auto scrollbar-thin scrollbar-thumb-sky-500/40 scrollbar-track-transparent">
-          <div className="flex gap-2 lg:flex-wrap pb-2">
+        <div className="relative z-10 w-full mt-5 lg:mt-7 overflow-x-auto scrollbar-thin scrollbar-thumb-white/20 hover:scrollbar-thumb-white/30 scrollbar-track-transparent">
+          <div className="flex gap-2 lg:flex-wrap pt-2 pb-2">
             {categories.map(({ index, label, short, Icon }) => {
               const active = skillState.index === index;
               return (
@@ -119,7 +119,7 @@ const SkillsSection = () => {
           </div>
         </div>
 
-        <div className="relative z-10 mt-4 lg:mt-6 w-full flex-1 min-h-0 overflow-y-auto scrollbar-thin scrollbar-thumb-sky-500/40 scrollbar-track-transparent pr-1">
+        <div className="relative z-10 mt-4 lg:mt-6 w-full flex-1 min-h-0 overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 hover:scrollbar-thumb-white/30 scrollbar-track-transparent pr-1">
           {skillState.index === '0' ? (<ProgrammingLanguages />) : null}
           {skillState.index === '1' ? (<FronteEnd />) : null}
           {skillState.index === '2' ? (<UiFrameWork />) : null}

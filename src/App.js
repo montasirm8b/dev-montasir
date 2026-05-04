@@ -140,7 +140,7 @@ const App = () => {
           </div>
           <div
             ref={skillsRef}
-            className="h-screen scroll-Section overflow-y-scroll scrollbar-thin scrollbar-thumb-blue-600"
+            className="h-screen scroll-Section overflow-y-scroll scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent hover:scrollbar-thumb-white/30"
           >
             <SkillsSection />
           </div>
