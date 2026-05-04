@@ -21,9 +21,10 @@ const CustomCursor = () => {
     document.documentElement.classList.add("cursor-custom");
 
     const FOLLOW = 0.22;
-    const SIZE_LERP = 0.2;
+    const SIZE_LERP = 0.16;
     const OPACITY_LERP = 0.18;
     const DEFAULT_SIZE = 38;
+    const UNSNAP_DELAY_MS = 90;
 
     let mouseX = -100;
     let mouseY = -100;
@@ -41,8 +42,9 @@ const CustomCursor = () => {
     let snappedEl = null;
     let visible = false;
     let rafId = 0;
+    let unsnapTimer = 0;
 
-    const setSnappedEl = (el) => {
+    const applySnap = (el) => {
       if (snappedEl === el) return;
       snappedEl = el;
       if (el) {
@@ -61,14 +63,30 @@ const CustomCursor = () => {
       }
     };
 
+    const requestSnap = (el) => {
+      if (el) {
+        if (unsnapTimer) {
+          window.clearTimeout(unsnapTimer);
+          unsnapTimer = 0;
+        }
+        applySnap(el);
+      } else {
+        if (unsnapTimer) window.clearTimeout(unsnapTimer);
+        unsnapTimer = window.setTimeout(() => {
+          unsnapTimer = 0;
+          applySnap(null);
+        }, UNSNAP_DELAY_MS);
+      }
+    };
+
     const computeTargets = () => {
       if (snappedEl && !document.contains(snappedEl)) {
-        setSnappedEl(null);
+        applySnap(null);
       }
       if (snappedEl) {
         const rect = snappedEl.getBoundingClientRect();
         if (rect.width === 0 && rect.height === 0) {
-          setSnappedEl(null);
+          applySnap(null);
         } else {
           const pad = 6;
           const cs = window.getComputedStyle(snappedEl);
@@ -162,7 +180,7 @@ const CustomCursor = () => {
     const onOver = (e) => {
       const target =
         e.target && e.target.closest && e.target.closest(HOVER_SELECTOR);
-      if (target) setSnappedEl(target);
+      if (target) requestSnap(target);
     };
     const onOut = (e) => {
       const target =
@@ -172,7 +190,7 @@ const CustomCursor = () => {
           e.relatedTarget &&
           e.relatedTarget.closest &&
           e.relatedTarget.closest(HOVER_SELECTOR);
-        if (next !== target) setSnappedEl(next || null);
+        if (next !== target) requestSnap(next || null);
       }
     };
 
@@ -202,6 +220,7 @@ const CustomCursor = () => {
 
     return () => {
       cancelAnimationFrame(rafId);
+      if (unsnapTimer) window.clearTimeout(unsnapTimer);
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerdown", onDown);
       window.removeEventListener("pointerup", onUp);
