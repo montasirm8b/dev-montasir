@@ -47,7 +47,7 @@ const Skills = () => {
     <div className='lg:hidden flex justify-center items-center bg-blue-500 bg-opacity-30 backdrop-blur-lg p-2 text-slate-100 text-xl font-semibold mb-6 rounded-md sticky top-0 z-20 mt-2 shadow-md'>My Skills are</div>
     <div className='bg-blue-500 bg-opacity-20 py-2 pb-4 lg:p-4 rounded-xl shadow-xl backdrop-blur-lg lg:min-h-full mx-1'>
       <div className='w-full flex justify-center items-center'>
-        <h1 className='hidden lg:block text-3xl font-DynaPuff-bold text-gray-100'>Web Technologies I use:</h1>
+        <h1 className='hidden lg:block text-3xl font-Merriweather-bold text-gray-100'>Web Technologies I use:</h1>
       </div>
         <div className='flex flex-col lg:py-8 px-4'>
             <h1 className='text-white text-lg font-Nunito-regular mb-2'>Web Programming / Frameworks</h1>

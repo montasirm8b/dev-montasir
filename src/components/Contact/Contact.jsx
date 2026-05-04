@@ -146,7 +146,7 @@ const Contact = () => {
           data-contact-heading
           className="relative z-10 flex gap-3 w-full justify-start items-center shrink-0"
         >
-          <span className="font-DynaPuff-bold text-xl md:text-2xl text-slate-100">Contact</span>
+          <span className="font-Merriweather-bold text-xl md:text-2xl text-slate-100">Contact</span>
           <div className="h-px flex-1 bg-gradient-to-r from-sky-400/60 via-blue-500/40 to-transparent rounded-lg"></div>
         </div>
 
@@ -154,7 +154,7 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-6">
             <div className="lg:col-span-2 flex flex-col gap-4">
               <div data-contact-item className="bg-white/5 backdrop-blur-md rounded-xl p-4 lg:p-5 border border-white/10">
-                <h3 className="font-DynaPuff-bold text-lg text-slate-100">Let's build something</h3>
+                <h3 className="font-Merriweather-bold text-lg text-slate-100">Let's build something</h3>
                 <p className="text-slate-300 font-Nunito-light text-sm mt-1 leading-relaxed">
                   Open to freelance, full-time roles, and interesting collaborations. I usually reply within 24 hours.
                 </p>

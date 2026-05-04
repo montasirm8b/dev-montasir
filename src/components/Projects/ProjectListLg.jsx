@@ -117,7 +117,7 @@ const ProjectListLg = ({ project }) => {
 
       <div className="px-4 lg:px-5 pb-2 flex-1 flex flex-col">
         <div className="flex items-start justify-between gap-3">
-          <h3 className="text-lg lg:text-xl text-white font-DynaPuff-bold leading-tight">
+          <h3 className="text-lg lg:text-xl text-white font-Merriweather-bold leading-tight">
             {project.name}
           </h3>
           {project.live_link && (

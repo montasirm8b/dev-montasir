@@ -83,11 +83,11 @@ const GithubContributions = () => {
             <div className='flex items-baseline gap-1'>
               <span
                 data-stat-num={s.value}
-                className='text-3xl lg:text-4xl font-DynaPuff-bold text-slate-50'
+                className='text-3xl lg:text-4xl font-Merriweather-bold text-slate-50'
               >
                 0
               </span>
-              <span className='text-2xl lg:text-3xl font-DynaPuff-bold text-sky-300'>
+              <span className='text-2xl lg:text-3xl font-Merriweather-bold text-sky-300'>
                 {s.suffix}
               </span>
             </div>

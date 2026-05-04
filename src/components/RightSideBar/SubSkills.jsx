@@ -42,7 +42,7 @@ const SubSkills = () => {
       <div data-sub-item className='relative z-10 text-center'>
         <div className='inline-flex items-center gap-2 text-sky-300'>
           <HiOutlineSparkles size={18} />
-          <span className='font-DynaPuff-bold text-lg text-white'>My Stack</span>
+          <span className='font-Merriweather-bold text-lg text-white'>My Stack</span>
         </div>
         <div className='mx-auto mt-2 mb-1 h-px w-16 bg-gradient-to-r from-transparent via-sky-300/60 to-transparent'></div>
         <p className='text-slate-300/90 font-Nunito-light text-xs'>What I reach for first</p>
