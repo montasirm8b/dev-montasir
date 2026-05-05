@@ -161,28 +161,19 @@ html {
   background-size: cover;
   background-position: center;
   filter: blur(22px) saturate(1.05);
-  transform: scale(1.08);
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 38%, transparent 72%);
-  mask-image: radial-gradient(circle at 50% 50%, #000 38%, transparent 72%);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: 50% 50%;
-  mask-position: 50% 50%;
-  -webkit-mask-size: 0% 0%;
-  mask-size: 0% 0%;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
   opacity: 0;
-  transition: opacity 650ms ease,
-              -webkit-mask-size 0ms linear 650ms,
-              mask-size 0ms linear 650ms;
+  -webkit-transition: opacity 600ms ease,
+                      -webkit-transform 2200ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 600ms ease,
+              transform 2200ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .bg-blur-overlay.is-active {
-  -webkit-mask-size: 260% 260%;
-  mask-size: 260% 260%;
   opacity: 1;
-  transition: opacity 0ms linear 0ms,
-              -webkit-mask-size 1100ms cubic-bezier(0.22, 1, 0.36, 1),
-              mask-size 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+  -webkit-transform: scale(1.35);
+          transform: scale(1.35);
 }
 
 .cursor-custom,
