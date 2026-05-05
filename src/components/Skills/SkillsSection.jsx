@@ -96,7 +96,7 @@ const SkillsSection = () => {
         </div>
 
         <div className="relative z-10 w-full mt-5 lg:mt-7 overflow-x-auto scrollbar-thin scrollbar-thumb-white/20 hover:scrollbar-thumb-white/30 scrollbar-track-transparent">
-          <div className="flex gap-2 lg:flex-wrap pt-2 pb-2">
+          <div className="flex gap-2 lg:flex-wrap pt-2 pb-3 pl-1 pr-1">
             {categories.map(({ index, label, short, Icon }) => {
               const active = skillState.index === index;
               return (
@@ -104,9 +104,9 @@ const SkillsSection = () => {
                   key={index}
                   data-skills-name
                   onClick={() => dispatch(changeIndex(index))}
-                  className={`shrink-0 flex items-center gap-2 px-3.5 py-2 rounded-xl ring-1 transition-all duration-300 font-Nunito-regular text-sm
+                  className={`shrink-0 flex items-center gap-2 px-3.5 py-2 rounded-xl ring-1 transition-colors duration-300 font-Nunito-regular text-sm
                     ${active
-                      ? 'bg-sky-500/20 text-white ring-sky-400/50 shadow-lg shadow-sky-500/20'
+                      ? 'bg-sky-500/20 text-white ring-sky-400/50'
                       : 'bg-white/5 text-slate-200 ring-white/10 hover:bg-white/10 hover:text-white hover:ring-white/20'}
                   `}
                 >
