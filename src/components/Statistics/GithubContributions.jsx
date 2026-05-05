@@ -50,22 +50,22 @@ const GithubStatsCard = () => {
     : null;
 
   return (
-    <div className='w-full rounded-md bg-slate-900/40 border border-white/10 p-4 flex flex-col gap-2'>
-      <div className='flex items-center gap-2 mb-2 pb-2 border-b border-white/10'>
-        <BsGithub className='text-sky-300' size={16} />
-        <span className='text-sky-300 font-Nunito-regular text-sm'>
+    <div className='w-full rounded-md bg-slate-900/40 border border-white/10 p-3 flex flex-col gap-1'>
+      <div className='flex items-center gap-2 mb-1 pb-1.5 border-b border-white/10'>
+        <BsGithub className='text-sky-300' size={12} />
+        <span className='text-sky-300 font-Nunito-regular text-[11px]'>
           {GH_USER}'s GitHub Stats
         </span>
       </div>
       {error && (
-        <div className='text-slate-400 text-xs font-Nunito-light'>
+        <div className='text-slate-400 text-[10px] font-Nunito-light'>
           Stats unavailable.
         </div>
       )}
       {!error && !items && (
-        <div className='space-y-2 animate-pulse'>
+        <div className='space-y-1.5 animate-pulse'>
           {[0, 1, 2, 3].map((i) => (
-            <div key={i} className='h-5 bg-white/5 rounded' />
+            <div key={i} className='h-3 bg-white/5 rounded' />
           ))}
         </div>
       )}
@@ -73,10 +73,10 @@ const GithubStatsCard = () => {
         items.map(({ icon: Icon, label, value }) => (
           <div
             key={label}
-            className='flex items-center justify-between text-sm'
+            className='flex items-center justify-between text-[11px]'
           >
-            <span className='flex items-center gap-2 text-slate-300 font-Nunito-light'>
-              <Icon className='text-sky-300' size={14} />
+            <span className='flex items-center gap-1.5 text-slate-300 font-Nunito-light'>
+              <Icon className='text-sky-300' size={11} />
               {label}
             </span>
             <span className='text-slate-50 font-Merriweather-bold'>
