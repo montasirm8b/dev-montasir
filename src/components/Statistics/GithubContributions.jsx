@@ -1,5 +1,11 @@
-import React, { useEffect, useRef } from 'react';
-import { BsGithub } from 'react-icons/bs';
+import React, { useEffect, useRef, useState } from 'react';
+import {
+  BsGithub,
+  BsFolderFill,
+  BsPeopleFill,
+  BsPersonFill,
+  BsCalendar3,
+} from 'react-icons/bs';
 import { gsap, getScroller } from '../../utils/gsap';
 
 const GH_USER = 'montasirm8b';
@@ -10,6 +16,77 @@ const stats = [
   { label: 'GitHub Repos', value: 30, suffix: '+' },
   { label: 'Happy Clients', value: 20, suffix: '+' },
 ];
+
+const GithubStatsCard = () => {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch(`https://api.github.com/users/${GH_USER}`)
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(r.status))))
+      .then((u) => {
+        if (!cancelled) setData(u);
+      })
+      .catch(() => {
+        if (!cancelled) setError(true);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const items = data
+    ? [
+        { icon: BsFolderFill, label: 'Public Repos', value: data.public_repos },
+        { icon: BsPeopleFill, label: 'Followers', value: data.followers },
+        { icon: BsPersonFill, label: 'Following', value: data.following },
+        {
+          icon: BsCalendar3,
+          label: 'Member Since',
+          value: new Date(data.created_at).getFullYear(),
+        },
+      ]
+    : null;
+
+  return (
+    <div className='w-full rounded-md bg-slate-900/40 border border-white/10 p-4 flex flex-col gap-2'>
+      <div className='flex items-center gap-2 mb-2 pb-2 border-b border-white/10'>
+        <BsGithub className='text-sky-300' size={16} />
+        <span className='text-sky-300 font-Nunito-regular text-sm'>
+          {GH_USER}'s GitHub Stats
+        </span>
+      </div>
+      {error && (
+        <div className='text-slate-400 text-xs font-Nunito-light'>
+          Stats unavailable.
+        </div>
+      )}
+      {!error && !items && (
+        <div className='space-y-2 animate-pulse'>
+          {[0, 1, 2, 3].map((i) => (
+            <div key={i} className='h-5 bg-white/5 rounded' />
+          ))}
+        </div>
+      )}
+      {items &&
+        items.map(({ icon: Icon, label, value }) => (
+          <div
+            key={label}
+            className='flex items-center justify-between text-sm'
+          >
+            <span className='flex items-center gap-2 text-slate-300 font-Nunito-light'>
+              <Icon className='text-sky-300' size={14} />
+              {label}
+            </span>
+            <span className='text-slate-50 font-Merriweather-bold'>
+              {value}
+            </span>
+          </div>
+        ))}
+    </div>
+  );
+};
 
 const GithubContributions = () => {
   const root = useRef(null);
@@ -123,11 +200,7 @@ const GithubContributions = () => {
           />
         </div>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-3 mt-4'>
-          <img
-            src={`https://github-readme-stats.vercel.app/api?username=${GH_USER}&show_icons=true&theme=tokyonight&hide_border=true&bg_color=00000000&title_color=7dd3fc&icon_color=7dd3fc&text_color=e2e8f0`}
-            alt='GitHub stats'
-            className='w-full rounded-md'
-          />
+          <GithubStatsCard />
           <img
             src={`https://github-readme-streak-stats.herokuapp.com?user=${GH_USER}&theme=tokyonight&hide_border=true&background=00000000&ring=7DD3FC&fire=7DD3FC&currStreakLabel=7DD3FC`}
             alt='GitHub streak'
