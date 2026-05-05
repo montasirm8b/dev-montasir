@@ -162,6 +162,17 @@ code {
   transform: scale(1.35);
 }
 
+@media (hover: none), (pointer: coarse), (max-width: 768px) {
+  .bg-blur-overlay {
+    filter: blur(12px) saturate(1);
+    transform: scale(1.05);
+    transition: opacity 350ms ease;
+  }
+  .bg-blur-overlay.is-active {
+    transform: scale(1.05);
+  }
+}
+
 .cursor-custom,
 .cursor-custom * {
   cursor: none !important;

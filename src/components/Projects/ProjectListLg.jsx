@@ -1,7 +1,20 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { HiOutlineExternalLink } from "react-icons/hi";
 import { AiOutlineGithub } from "react-icons/ai";
 import { gsap } from "../../utils/gsap";
+
+const supportsFineHover = () =>
+  typeof window !== "undefined" &&
+  window.matchMedia &&
+  window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+const buildCloudinaryUrl = (url, width) => {
+  if (!url || typeof url !== "string" || !url.includes("res.cloudinary.com")) return url;
+  if (url.includes("/upload/f_") || url.includes("/upload/q_") || url.includes("/upload/w_")) return url;
+  return url.replace("/upload/", `/upload/f_auto,q_auto,w_${width}/`);
+};
+
+const RESPONSIVE_WIDTHS = [400, 640, 800, 1024];
 
 const ProjectListLg = ({ project }) => {
   const containerRef = useRef(null);
@@ -13,7 +26,15 @@ const ProjectListLg = ({ project }) => {
   const rotateYTo = useRef(null);
   const liftTo = useRef(null);
 
+  const imageSrc = useMemo(() => buildCloudinaryUrl(project.image, 640), [project.image]);
+  const imageSrcSet = useMemo(
+    () =>
+      RESPONSIVE_WIDTHS.map((w) => `${buildCloudinaryUrl(project.image, w)} ${w}w`).join(", "),
+    [project.image]
+  );
+
   useEffect(() => {
+    if (!supportsFineHover()) return;
     const container = imageContainerRef.current;
     const card = containerRef.current;
     if (!container || !card) return;
@@ -35,6 +56,7 @@ const ProjectListLg = ({ project }) => {
   }, []);
 
   const startScroll = () => {
+    if (!supportsFineHover()) return;
     const image = imageRef.current;
     const container = imageContainerRef.current;
     if (!image || !container) return;
@@ -72,6 +94,7 @@ const ProjectListLg = ({ project }) => {
   };
 
   const handleMouseMove = (e) => {
+    if (!rotateXTo.current || !rotateYTo.current) return;
     const container = imageContainerRef.current;
     if (!container) return;
 
@@ -106,8 +129,12 @@ const ProjectListLg = ({ project }) => {
         >
           <img
             ref={imageRef}
-            src={project.image}
+            src={imageSrc}
+            srcSet={imageSrcSet}
+            sizes="(max-width: 768px) 92vw, (max-width: 1024px) 46vw, 480px"
             alt={project.name}
+            loading="lazy"
+            decoding="async"
             className="w-full will-change-transform"
             style={{ transform: "translateY(0)" }}
           />
