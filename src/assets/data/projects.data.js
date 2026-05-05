@@ -20,12 +20,12 @@ const Projects = [
     id: 2,
     name: "Saybriefly",
     description:
-      "SayBriefly is an AI-powered summarization tool that helps you quickly generate concise summaries from long texts, articles, or documents.",
+      "SayBriefly is an AI-powered summarization platform that turns long articles, documents, and transcripts into clear, concise briefs in seconds.",
     image:
       "https://res.cloudinary.com/ddn8d9v4a/image/upload/v1748341145/saybriefly.com-Home_Say_Briefly-fpscreenshot-1_2_1_pgwpzl.jpg",
     live_link: "https://saybriefly.com",
     github_link: "",
-    used: ["Unity", "SketchUp", "3D Modeling", "3D Animation"],
+    used: ["Next.js", "Node.js/Express.js", "OpenAI API", "MongoDB", "Tailwind CSS"],
   },
   {
     id: 3,
