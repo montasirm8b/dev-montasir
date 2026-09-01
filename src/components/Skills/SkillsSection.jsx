@@ -7,18 +7,20 @@ import UiFrameWork from './SkillSet/UiFrameWorks';
 import BackEnd from "./SkillSet/BackEnd";
 import ToolsPlatform from './SkillSet/ToolsPlatform';
 import DataBase from "./SkillSet/DataBase";
+import AI from "./SkillSet/AI";
 import { gsap, getScroller, defaultEase } from "../../utils/gsap";
 import { HiOutlineCode } from "react-icons/hi";
 import { MdWeb, MdPalette } from "react-icons/md";
-import { FaServer, FaTools, FaDatabase } from "react-icons/fa";
+import { FaServer, FaTools, FaDatabase, FaBrain } from "react-icons/fa";
 
 const categories = [
   { index: '0', label: 'Programming Languages', short: 'Languages', Icon: HiOutlineCode },
   { index: '1', label: 'Front-End Technologies', short: 'Front-End', Icon: MdWeb },
   { index: '2', label: 'UI Frameworks', short: 'UI', Icon: MdPalette },
   { index: '3', label: 'Back-End Technologies', short: 'Back-End', Icon: FaServer },
-  { index: '4', label: 'Tools and Platforms', short: 'Tools', Icon: FaTools },
-  { index: '5', label: 'Database', short: 'Database', Icon: FaDatabase },
+  { index: '4', label: 'AI & Machine Learning', short: 'AI/ML', Icon: FaBrain },
+  { index: '5', label: 'Tools and Platforms', short: 'Tools', Icon: FaTools },
+  { index: '6', label: 'Database', short: 'Database', Icon: FaDatabase },
 ];
 
 const SkillsSection = () => {
@@ -124,8 +126,9 @@ const SkillsSection = () => {
           {skillState.index === '1' ? (<FronteEnd />) : null}
           {skillState.index === '2' ? (<UiFrameWork />) : null}
           {skillState.index === '3' ? (<BackEnd />) : null}
-          {skillState.index === '4' ? (<ToolsPlatform />) : null}
-          {skillState.index === '5' ? (<DataBase />) : null}
+          {skillState.index === '4' ? (<AI />) : null}
+          {skillState.index === '5' ? (<ToolsPlatform />) : null}
+          {skillState.index === '6' ? (<DataBase />) : null}
         </div>
       </div>
     </div>

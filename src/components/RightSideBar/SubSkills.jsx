@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap, defaultEase } from '../../utils/gsap';
-import { SiNextdotjs, SiReact, SiTailwindcss, SiTypescript, SiNodedotjs, SiMongodb } from 'react-icons/si';
+import { SiNextdotjs, SiReact, SiTailwindcss, SiTypescript, SiNodedotjs, SiMongodb, SiOpenai } from 'react-icons/si';
 import { HiOutlineLightBulb, HiOutlineSparkles } from 'react-icons/hi';
+import { TbRobot } from 'react-icons/tb';
 
 const featured = [
   { Icon: SiNextdotjs, name: 'Next.js', tone: 'text-white' },
@@ -10,6 +11,8 @@ const featured = [
   { Icon: SiTailwindcss, name: 'Tailwind', tone: 'text-cyan-400' },
   { Icon: SiNodedotjs, name: 'Node.js', tone: 'text-green-400' },
   { Icon: SiMongodb, name: 'MongoDB', tone: 'text-emerald-400' },
+  { Icon: SiOpenai, name: 'OpenAI API', tone: 'text-teal-300' },
+  { Icon: TbRobot, name: 'AI Agents', tone: 'text-amber-400' },
 ];
 
 const SubSkills = () => {
@@ -66,7 +69,7 @@ const SubSkills = () => {
           <span className='text-slate-100 font-Nunito-regular text-sm'>Currently exploring</span>
         </div>
         <p className='text-slate-300 font-Nunito-light text-xs leading-relaxed'>
-          AI integrations, edge functions, and crafting interfaces that feel as good as they look.
+          Agentic AI systems, RAG pipelines, and writing a 100-day series on building production-grade AI agents.
         </p>
       </div>
 

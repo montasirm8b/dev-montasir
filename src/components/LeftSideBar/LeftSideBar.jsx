@@ -5,13 +5,14 @@ import { TiInfoLarge } from "react-icons/ti";
 import { FaProjectDiagram } from "react-icons/fa";
 import { GiSkills } from "react-icons/gi";
 import { ImStatsBars } from "react-icons/im";
-import { HiOutlineMail } from "react-icons/hi";
+import { HiOutlineMail, HiOutlineNewspaper } from "react-icons/hi";
 import mobilelogo from "../../assets/images/mlogo.png";
 
 const navItems = [
   { id: "intro", label: "Introduction", Icon: TiInfoLarge },
   { id: "skills", label: "Skills", Icon: GiSkills },
   { id: "projects", label: "Projects", Icon: FaProjectDiagram },
+  { id: "blog", label: "Writing", Icon: HiOutlineNewspaper },
   { id: "courses", label: "Statistics", Icon: ImStatsBars },
   { id: "contact", label: "Contact", Icon: HiOutlineMail },
 ];

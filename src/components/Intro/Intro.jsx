@@ -25,11 +25,11 @@ const Intro = () => {
     <div className='intro scroll-Section'>
       <div id='intro' className='h-screen px-4 flex flex-col justify-center items-center'>
         <div className='flex flex-col justify-center items-center'>
-          <span ref={headlineRef} className='font-Josefin-Slab text-6xl text-slate-100'>
+          <span ref={headlineRef} className='font-Josefin-Slab text-6xl text-slate-100 text-center'>
             Hey, I'm Montasir Mahmud
           </span>
-          <span ref={subRef} className='font-Josefin-Slab text-2xl text-slate-100'>
-            Passionate Web Developer
+          <span ref={subRef} className='font-Josefin-Slab text-xl md:text-2xl text-slate-100 text-center max-w-2xl mt-1'>
+            Full-Stack Developer Building AI-Powered Products
           </span>
         </div>
       </div>

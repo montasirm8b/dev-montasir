@@ -10,6 +10,7 @@ import {
 } from "./store/AppState";
 import Projects from "./components/Projects/Projects";
 import SkillsSection from "./components/Skills/SkillsSection";
+import Blog from "./components/Blog/Blog";
 import Statistics from "./components/Statistics/Statistics";
 import Contact from "./components/Contact/Contact";
 import { AnimatePresence, motion } from "framer-motion";
@@ -27,6 +28,7 @@ const App = () => {
   const scrollRef = useRef(null);
   const skillsRef = useRef(null);
   const projectsRef = useRef(null);
+  const blogRef = useRef(null);
   const coursesRef = useRef(null);
   const contactRef = useRef(null);
   const mobileIntroRef = useRef(null);
@@ -46,6 +48,7 @@ const App = () => {
       introRef.current &&
       skillsRef.current &&
       projectsRef.current &&
+      blogRef.current &&
       coursesRef.current &&
       contactRef.current
     ) {
@@ -54,6 +57,7 @@ const App = () => {
           intro: introRef.current.getBoundingClientRect().top,
           skills: skillsRef.current.getBoundingClientRect().top,
           projects: projectsRef.current.getBoundingClientRect().top,
+          blog: blogRef.current.getBoundingClientRect().top,
           courses: coursesRef.current.getBoundingClientRect().top,
           contact: contactRef.current.getBoundingClientRect().top,
         })
@@ -81,6 +85,7 @@ const App = () => {
         intro: introRef.current.getBoundingClientRect().top,
         skills: skillsRef.current.getBoundingClientRect().top,
         projects: projectsRef.current.getBoundingClientRect().top,
+        blog: blogRef.current.getBoundingClientRect().top,
         courses: coursesRef.current.getBoundingClientRect().top,
         contact: contactRef.current.getBoundingClientRect().top,
       })
@@ -158,6 +163,12 @@ const App = () => {
           >
             <Projects />
           </div>
+          <div
+            ref={blogRef}
+            className="h-screen scroll-Section pl-2 lg:pl-0 lg:pb-4"
+          >
+            <Blog />
+          </div>
           <div ref={coursesRef} className="h-screen scroll-Section">
             <Statistics />
           </div>
@@ -225,20 +236,22 @@ const App = () => {
                                 Montasir Mahmud
                               </span>
                               <span className="text-lg">
-                                Full Stack Web Developer
+                                Full-Stack Developer · AI-Powered Products
                               </span>
                             </div>
                           </div>
                         </IntroSection>
                         <DividerLine index={0} />
                         <IntroSection index={1}>
-                          <span className="text-xl font-semibold">Summery</span>
+                          <span className="text-xl font-semibold">Summary</span>
                           <div className="text-justify">
-                            I am passionate about building excellent software
-                            that improves the lives of those around me. I
-                            specialize in creating software for clients ranging
-                            from individuals and small-businesses all the way to
-                            large enterprise corporations.
+                            I build full-stack products end to end and
+                            increasingly bring AI into the mix — LLM
+                            integrations, agentic workflows, and
+                            retrieval-based features that make software
+                            genuinely useful. I work with clients ranging from
+                            individuals and small businesses to large
+                            enterprise corporations.
                           </div>
                         </IntroSection>
                         <DividerLine index={1} />
@@ -285,19 +298,19 @@ const App = () => {
                           </div>
                           <div className="text-justify">
                             <span className="text-lg font-semibold">
-                              2. Level One Seller
-                            </span>
-                            <span className="text-lg"> (Fiverr)</span>
-                          </div>
-
-                          <div className="text-justify">
-                            <span className="text-lg font-semibold">
-                              3. Web Developer Internee
+                              2. Web Developer Intern
                             </span>
                             <span className="text-lg">
                               {" "}
                               (Qubitech Solutions, Rajshahi)
                             </span>
+                          </div>
+
+                          <div className="text-justify">
+                            <span className="text-lg font-semibold">
+                              3. Level One Seller
+                            </span>
+                            <span className="text-lg"> (Fiverr, Freelance)</span>
                           </div>
                         </IntroSection>
                         <DividerLine index={3} />

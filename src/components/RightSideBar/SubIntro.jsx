@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import ToolTip from '../ToolTip/ToolTip';
 import { AiFillTwitterCircle } from 'react-icons/ai';
 import { BsFacebook, BsGithub, BsLinkedin } from 'react-icons/bs';
-import { FaUniversity, FaGraduationCap } from 'react-icons/fa';
+import { FaUniversity, FaGraduationCap, FaBriefcase } from 'react-icons/fa';
 import Quote from '../Intro/Quote';
 import Links from '../../assets/data/links.data';
 import ProfilePhoto from '../../assets/images/Montasir-Mahmud.webp';
@@ -59,12 +59,12 @@ const SubIntro = () => {
           <span className='font-Josefin-Slab-600 text-xl text-white tracking-wide leading-none'>
             Montasir Mahmud
           </span>
-          <span className='text-[11px] uppercase tracking-[0.2em] text-sky-300/90 font-Nunito-regular'>
-            Full Stack Developer
+          <span className='text-[11px] uppercase tracking-[0.15em] text-sky-300/90 font-Nunito-regular text-center px-2'>
+            Full-Stack Developer · AI-Powered Products
           </span>
         </div>
 
-        <div className='relative z-10 flex-1 min-h-0 w-full flex flex-col items-center overflow-hidden mt-4 px-1'>
+        <div className='relative z-10 flex-1 min-h-0 w-full flex flex-col items-center overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 hover:scrollbar-thumb-white/30 scrollbar-track-transparent mt-4 px-1'>
           <h1 data-stagger className='text-white font-Nunito-regular tracking-wide shrink-0'>
             About Me
           </h1>
@@ -76,7 +76,7 @@ const SubIntro = () => {
             data-stagger
             className='px-4 text-white font-Nunito-light text-center shrink-0'
           >
-            I am passionate about building excellent software that improves the lives of those around me. I specialize in creating software for clients ranging from individuals and small-businesses all the way to large enterprise corporations.
+            I build full-stack products end to end and increasingly bring AI into the mix — LLM integrations, agentic workflows, and retrieval-based features that make software genuinely useful. I work with clients ranging from individuals and small businesses to large enterprise corporations.
           </p>
 
           <h1 data-stagger className='mt-5 text-white font-Nunito-regular tracking-wide shrink-0'>
@@ -103,6 +103,43 @@ const SubIntro = () => {
               <div className='leading-snug min-w-0'>
                 <span className='font-Nunito-light text-slate-300'>Goes to</span>{' '}
                 <span className='font-Nunito-regular'>Rajshahi University of Engineering and Technology</span>
+              </div>
+            </div>
+          </div>
+
+          <h1 data-stagger className='mt-5 text-white font-Nunito-regular tracking-wide shrink-0'>
+            Experience
+          </h1>
+          <div
+            data-stagger
+            className='mx-auto mt-1 mb-2 h-px w-12 bg-gradient-to-r from-transparent via-sky-300/60 to-transparent shrink-0'
+          ></div>
+          <div data-stagger className='flex flex-col px-4 pb-2 text-white gap-2 w-full shrink-0'>
+            <div className='flex items-start gap-2.5 bg-white/5 hover:bg-white/10 transition-colors duration-300 rounded-xl p-3 ring-1 ring-white/5'>
+              <span className='shrink-0 text-sky-300 mt-0.5'>
+                <FaBriefcase size={20} />
+              </span>
+              <div className='leading-snug min-w-0'>
+                <span className='font-Nunito-regular'>Junior Software Engineer</span>
+                <span className='font-Nunito-light text-slate-300'> · Codestudio</span>
+              </div>
+            </div>
+            <div className='flex items-start gap-2.5 bg-white/5 hover:bg-white/10 transition-colors duration-300 rounded-xl p-3 ring-1 ring-white/5'>
+              <span className='shrink-0 text-sky-300 mt-0.5'>
+                <FaBriefcase size={20} />
+              </span>
+              <div className='leading-snug min-w-0'>
+                <span className='font-Nunito-regular'>Web Developer Intern</span>
+                <span className='font-Nunito-light text-slate-300'> · Qubitech Solutions</span>
+              </div>
+            </div>
+            <div className='flex items-start gap-2.5 bg-white/5 hover:bg-white/10 transition-colors duration-300 rounded-xl p-3 ring-1 ring-white/5'>
+              <span className='shrink-0 text-sky-300 mt-0.5'>
+                <FaBriefcase size={20} />
+              </span>
+              <div className='leading-snug min-w-0'>
+                <span className='font-Nunito-regular'>Level One Seller</span>
+                <span className='font-Nunito-light text-slate-300'> · Fiverr (Freelance)</span>
               </div>
             </div>
           </div>
