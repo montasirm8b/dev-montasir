@@ -33,7 +33,7 @@ const Projects = [
     description:
       "Cox Game Shop is your go-to online store for top-up services, gaming accounts, and digital goods tailored for Bangladeshi gamers.",
     image:
-      "https://res.cloudinary.com/ddn8d9v4a/image/upload/v1748341352/coxgameshop.com-Cox_Gameshop_Cox_Gameshop_is_a_top-up_website_in_Bangladesh-fpscreenshot_g3dr1d.jpg",
+      "https://res.cloudinary.com/ddn8d9v4a/image/upload/v1790850106/coxgameshop.com-Cox_Gameshop_-_Best_Free_Fire_Diamond_Topup_in_Bangladesh_Instant_Free_Fire_Topup-fpscreenshot_ymjeey.jpg",
     live_link: "https://coxgameshop.com/",
     github_link: "",
     used: ["Firebase", "React.js", "Node.js", "Tailwind CSS"],

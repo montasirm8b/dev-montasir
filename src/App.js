@@ -289,28 +289,25 @@ const App = () => {
                           </span>
                           <div className="text-justify">
                             <span className="text-lg font-semibold">
-                              1. Junior Software Engineer
+                              1. Backend Engineer
+                            </span>
+                            <span className="text-lg"> (Makebell Ltd)</span>
+                          </div>
+                          <div className="text-justify">
+                            <span className="text-lg font-semibold">
+                              2. Backend Engineer
+                            </span>
+                            <span className="text-lg"> (DataCops)</span>
+                          </div>
+
+                          <div className="text-justify">
+                            <span className="text-lg font-semibold">
+                              3. Junior Software Engineer
                             </span>
                             <span className="text-lg">
                               {" "}
                               (Codestudio, Rajshahi)
                             </span>
-                          </div>
-                          <div className="text-justify">
-                            <span className="text-lg font-semibold">
-                              2. Web Developer Intern
-                            </span>
-                            <span className="text-lg">
-                              {" "}
-                              (Qubitech Solutions, Rajshahi)
-                            </span>
-                          </div>
-
-                          <div className="text-justify">
-                            <span className="text-lg font-semibold">
-                              3. Level One Seller
-                            </span>
-                            <span className="text-lg"> (Fiverr, Freelance)</span>
                           </div>
                         </IntroSection>
                         <DividerLine index={3} />

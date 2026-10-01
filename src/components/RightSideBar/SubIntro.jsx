@@ -120,26 +120,26 @@ const SubIntro = () => {
                 <FaBriefcase size={20} />
               </span>
               <div className='leading-snug min-w-0'>
+                <span className='font-Nunito-regular'>Backend Engineer</span>
+                <span className='font-Nunito-light text-slate-300'> · Makebell Ltd</span>
+              </div>
+            </div>
+            <div className='flex items-start gap-2.5 bg-white/5 hover:bg-white/10 transition-colors duration-300 rounded-xl p-3 ring-1 ring-white/5'>
+              <span className='shrink-0 text-sky-300 mt-0.5'>
+                <FaBriefcase size={20} />
+              </span>
+              <div className='leading-snug min-w-0'>
+                <span className='font-Nunito-regular'>Backend Engineer</span>
+                <span className='font-Nunito-light text-slate-300'> · DataCops</span>
+              </div>
+            </div>
+            <div className='flex items-start gap-2.5 bg-white/5 hover:bg-white/10 transition-colors duration-300 rounded-xl p-3 ring-1 ring-white/5'>
+              <span className='shrink-0 text-sky-300 mt-0.5'>
+                <FaBriefcase size={20} />
+              </span>
+              <div className='leading-snug min-w-0'>
                 <span className='font-Nunito-regular'>Junior Software Engineer</span>
                 <span className='font-Nunito-light text-slate-300'> · Codestudio</span>
-              </div>
-            </div>
-            <div className='flex items-start gap-2.5 bg-white/5 hover:bg-white/10 transition-colors duration-300 rounded-xl p-3 ring-1 ring-white/5'>
-              <span className='shrink-0 text-sky-300 mt-0.5'>
-                <FaBriefcase size={20} />
-              </span>
-              <div className='leading-snug min-w-0'>
-                <span className='font-Nunito-regular'>Web Developer Intern</span>
-                <span className='font-Nunito-light text-slate-300'> · Qubitech Solutions</span>
-              </div>
-            </div>
-            <div className='flex items-start gap-2.5 bg-white/5 hover:bg-white/10 transition-colors duration-300 rounded-xl p-3 ring-1 ring-white/5'>
-              <span className='shrink-0 text-sky-300 mt-0.5'>
-                <FaBriefcase size={20} />
-              </span>
-              <div className='leading-snug min-w-0'>
-                <span className='font-Nunito-regular'>Level One Seller</span>
-                <span className='font-Nunito-light text-slate-300'> · Fiverr (Freelance)</span>
               </div>
             </div>
           </div>
